@@ -15,30 +15,31 @@ public class Rimskie extends Dopclass {
     Rimskie(String value1, String value2)
     {
         this.rim_value1 = value1; this.rim_value2 = value2;
-        this.rim_value1_int = convert_to_int(rim_value1); this.rim_value2_int = convert_to_int(rim_value2);
+        this.rim_value1_int = convert_to_int(rim_value1);
+        this.rim_value2_int = convert_to_int(rim_value2);
     }
-    private String convert_in_Romes(int a, int ostatok)
+    private String convert_in_Rimskie(int a, int ostatok)
     {
         ostatok = a % 10;
         if (ostatok != 0) {
             try
             {
-                return convert_in_Romes(a - ostatok, 0) + rim_letters[ostatok - 1];
+                return convert_in_Rimskie(a - ostatok, 0) + rim_letters[ostatok - 1];
             } catch (ArrayIndexOutOfBoundsException e)
             {
                 sign = "-";
-                return convert_in_Romes(a - ostatok, 0) + rim_letters[(ostatok + 1) * -1];
+                return convert_in_Rimskie(a - ostatok, 0) + rim_letters[(ostatok + 1) * -1];
             }
         }
 
         if (a > 0)
         {
             a = a - 10;
-            return convert_in_Romes(a,0) + "X";
+            return convert_in_Rimskie(a,0) + "X";
         } else if (a < 0)
         {
             a = a + 10;
-            return convert_in_Romes(a,0) + "X";
+            return convert_in_Rimskie(a,0) + "X";
         }   else
         {
             return sign;
@@ -48,20 +49,20 @@ public class Rimskie extends Dopclass {
     @Override
     public void deduction()
     {
-        rezultat_int = rim_value1_int - rim_value2_int; rezultat_string = convert_in_Romes(rezultat_int, rezultat_int);
+        rezultat_int = rim_value1_int - rim_value2_int; rezultat_string = convert_in_Rimskie(rezultat_int, rezultat_int);
     }
 
     @Override
     public void summa()
     {
-        rezultat_int = rim_value1_int + rim_value2_int; rezultat_string = convert_in_Romes(rezultat_int, rezultat_int);
+        rezultat_int = rim_value1_int + rim_value2_int; rezultat_string = convert_in_Rimskie(rezultat_int, rezultat_int);
     }
 
     @Override
     public void division()
     {
         try {
-            rezultat_int = rim_value1_int / rim_value2_int; rezultat_string = convert_in_Romes(rezultat_int, rezultat_int);
+            rezultat_int = rim_value1_int / rim_value2_int; rezultat_string = convert_in_Rimskie(rezultat_int, rezultat_int);
         } catch (ArithmeticException e) {
             return;
         }
@@ -70,7 +71,7 @@ public class Rimskie extends Dopclass {
     @Override
     public void mult()
     {
-        rezultat_int = rim_value1_int * rim_value2_int; rezultat_string = convert_in_Romes(rezultat_int, rezultat_int);
+        rezultat_int = rim_value1_int * rim_value2_int; rezultat_string = convert_in_Rimskie(rezultat_int, rezultat_int);
     }
 
     @Override
